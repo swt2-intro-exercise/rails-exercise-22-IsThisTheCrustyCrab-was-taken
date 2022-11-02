@@ -5,4 +5,11 @@ class AuthorsController < ApplicationController
     @author.save
     redirect_to root_path, notice: 'Success!'
   end
+  #show author with id
+  def show
+    puts(params)
+
+
+    @author = Author.find(params[:id])
+  end
 end

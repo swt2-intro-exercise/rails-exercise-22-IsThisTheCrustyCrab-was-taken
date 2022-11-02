@@ -23,4 +23,9 @@ describe "New author page", type: :feature do
      #check if author is found in database
      expect(Author.where(first_name: 'Alan', last_name: 'Turing', homepage: 'http://wikipedia.org/Alan_Turing')).to exist
    end
+   it "should exist at 'author_path' and render withour error" do
+     #create alan
+     @alan = FactoryBot.create :author
+     visit author_path(@alan)
+   end
  end

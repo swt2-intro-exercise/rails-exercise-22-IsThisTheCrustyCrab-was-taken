@@ -3,13 +3,13 @@
 require 'rails_helper'
 
 describe "Show author page", type: :feature do
-
-  #visit page of @alan and check if it exists
-  it "should exist at 'author_path' and render withour error" do
-    # create author alan turing
-    @alan = Author.new(first_name: 'Alan', last_name: 'Turing', homepage: 'http://wikipedia.org/Alan_Turing')
-    @alan.save
+  #visit page of @alan and check if details are on page
+  it "should display the author's details" do
+    #create alan
+    @alan = FactoryBot.create :author
     visit author_path(@alan)
+    expect(page).to have_text("Alan Turing")
+    expect(page).to have_text("http://wikipedia.de/Alan_Turing")
   end
 end
 
