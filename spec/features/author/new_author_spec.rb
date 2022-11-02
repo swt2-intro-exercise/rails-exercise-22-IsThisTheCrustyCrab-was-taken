@@ -12,4 +12,15 @@ describe "New author page", type: :feature do
      expect(page).to have_field('author[last_name]')
      expect(page).to have_field('author[homepage]')
    end
+   #fill out form and check if author is found in database
+   it "should save the author after submitting the form" do
+     visit new_author_path
+     # these are the standard names given to inputs by the Rails form builder
+     fill_in 'author[first_name]', with: 'Alan'
+     fill_in 'author[last_name]', with: 'Turing'
+     fill_in 'author[homepage]', with: 'http://wikipedia.org/Alan_Turing'
+     find('input[type="submit"]').click
+     #check if author is found in database
+     expect(Author.where(first_name: 'Alan', last_name: 'Turing', homepage: 'http://wikipedia.org/Alan_Turing')).to exist
+   end
  end
