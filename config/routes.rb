@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'author/new'
-  get 'authors/new'
+  post 'authors/new' => 'authors#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rails routes".
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'new_author' => 'authors#new'
+  post 'new_author' => 'authors#create'
+
+
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
