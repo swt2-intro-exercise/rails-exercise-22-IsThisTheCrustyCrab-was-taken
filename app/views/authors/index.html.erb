@@ -1,0 +1,21 @@
+<h1>Authors#index</h1>
+<p>Find me in app/views/authors/index.html.erb</p>
+<!-- show table of all authors with name, homepage and link to author page -->
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Homepage</th>
+    <th>Link</th>
+  </tr>
+  <% @authors.each do |author| %>
+    <tr>
+      <td><%= author.name %></td>
+      <td><%= author.homepage %></td>
+      <td><%= link_to 'Show', author_path(author) %></td>
+    </tr>
+  <% end %>
+  <!-- link to create new author -->
+  <tr>
+    <td colspan="3"><%= link_to 'New Author', new_author_path %></td>
+  </tr>
+</table>

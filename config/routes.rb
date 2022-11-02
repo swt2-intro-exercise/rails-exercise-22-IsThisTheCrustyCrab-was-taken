@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'authors/index'
   get 'author/new'
   post 'authors/new' => 'authors#create'
   # The priority is based upon order of creation: first created -> highest priority.
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   post 'new_author' => 'authors#create'
 
   resources :authors
+  get 'authors' => 'authors#index'
 
 
   # Example resource route (maps HTTP verbs to controller actions automatically):

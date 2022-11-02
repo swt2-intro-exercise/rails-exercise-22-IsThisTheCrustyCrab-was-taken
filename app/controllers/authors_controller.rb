@@ -7,9 +7,11 @@ class AuthorsController < ApplicationController
   end
   #show author with id
   def show
-    puts(params)
 
 
     @author = Author.find(params[:id])
+  end
+  def index
+    @authors = Author.all
   end
 end
