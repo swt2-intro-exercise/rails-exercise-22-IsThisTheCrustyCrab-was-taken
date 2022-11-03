@@ -33,4 +33,11 @@ describe "New author page", type: :feature do
      @alan = FactoryBot.build :author_without_last_name
      expect(@alan).to_not be_valid
    end
+   #check that error message is shown
+    it "should show an error message if last name is not present" do
+      @alan = FactoryBot.build :author_without_last_name
+      @alan.save
+      #check if error message is shown
+      expect(page).to have_text("Last name can't be blank")
+    end
  end
