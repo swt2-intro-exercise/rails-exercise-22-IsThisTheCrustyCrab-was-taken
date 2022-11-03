@@ -28,10 +28,9 @@ describe "New author page", type: :feature do
      @alan = FactoryBot.create :author
      visit author_path(@alan)
    end
-   # creating author withour last name should fail
-    it "should not save the author without last name" do
-      @alan = FactoryBot.create :author_without_last_name
-      expect(@alan).to_not be_valid
-    end
-
+   # check model for validation
+   it "should validate the presence of last name" do
+     @alan = FactoryBot.build :author_without_last_name
+     expect(@alan).to_not be_valid
+   end
  end
