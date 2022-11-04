@@ -2,6 +2,17 @@
 <p>Find me in app/views/authors/new.html.erb</p>
 <!-- form in scope authors that will be sent to authors#new and accepts first_name, last_name and homepage -->
 <%= form_with scope: :author, local: true do |f| %>
+  <!-- if there are any errors, display them -->
+  <% if @author.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@author.errors.count, "error") %> prohibited this author from being saved:</h2>
+      <ul>
+        <% @author.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <p>
     <%= f.label :first_name %><br>
     <%= f.text_field :first_name %>

@@ -33,11 +33,13 @@ describe "New author page", type: :feature do
      @alan = FactoryBot.build :author_without_last_name
      expect(@alan).to_not be_valid
    end
-   #check that error message is shown
-    it "should show an error message if last name is not present" do
-      @alan = FactoryBot.build :author_without_last_name
-      @alan.save
-      #check if error message is shown
+   #fill in form with missing last name and check if error message is shown
+    it "should show an error message if last name is missing" do
+      visit new_author_path
+      # these are the standard names given to inputs by the Rails form builder
+      fill_in 'author[first_name]', with: 'Alan'
+      fill_in 'author[homepage]', with: 'http://wikipedia.org/Alan_Turing'
+      find('input[type="submit"]').click
       expect(page).to have_text("Last name can't be blank")
-    end
+    end∆
  end

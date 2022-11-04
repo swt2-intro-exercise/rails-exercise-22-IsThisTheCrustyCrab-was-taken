@@ -1,5 +1,8 @@
 class AuthorsController < ApplicationController
   #create author in database with parameters from post request
+  def new
+    @author = Author.new
+  end
   def create
     @author = Author.new(first_name: params[:author][:first_name], last_name: params[:author][:last_name], homepage: params[:author][:homepage])
     if @author.save
@@ -10,8 +13,6 @@ class AuthorsController < ApplicationController
   end
   #show author with id
   def show
-
-
     @author = Author.find(params[:id])
   end
   def index
