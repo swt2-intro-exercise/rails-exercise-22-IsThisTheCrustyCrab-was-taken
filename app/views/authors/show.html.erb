@@ -4,4 +4,7 @@
 <p><%= @author.first_name %></p>
 <p><%= @author.last_name %></p>
 <p><%= @author.homepage %></p>
-
+<!-- link to edit author page -->
+<%= link_to 'Edit', edit_author_path(@author) %> |
+<!-- link to home page -->
+<%= link_to 'Back', root_path %>

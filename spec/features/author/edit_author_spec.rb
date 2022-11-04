@@ -17,7 +17,8 @@ describe "Edit author page", type: :feature do
     fill_in 'author[last_name]', with: 'Turing'
     fill_in 'author[homepage]', with: 'http://wikipedia.org/Alan_Turing'
     find('input[type="submit"]').click
-    #check if author is found in database
-    expect(Author.where(first_name: 'Alan Mathison', last_name: 'Turing', homepage: 'http://wikipedia.org/Alan_Turing')).to exist
+    #check if alan was updated
+    @alan.reload
+    expect(@alan.first_name).to eq("Alan Mathison")
   end
 end
