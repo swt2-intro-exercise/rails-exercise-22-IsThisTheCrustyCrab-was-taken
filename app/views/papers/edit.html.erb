@@ -1,6 +1,21 @@
 <h1>Editing paper</h1>
 
 <%= form_with(model:@paper, local:true) do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :venue %><br>
+    <%= form.text_field :venue %>
+  </p>
+
+  <p>
+    <%= form.label :year%><br>
+    <%= form.text_field :year %>
+  </p>
+
   <%= form.select 'author_ids',
                   options_from_collection_for_select(Author.all, :id, :name, @paper.author_ids),
                   {},
