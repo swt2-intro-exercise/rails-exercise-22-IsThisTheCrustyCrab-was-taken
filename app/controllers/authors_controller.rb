@@ -35,12 +35,9 @@ class AuthorsController < ApplicationController
   end
   def destroy
     @author = Author.find(params[:id])
-    puts("found author with id #{params[:id]} and name #{author_params[:first_name]} #{author_params[:last_name]}")
     if @author.destroy
-      puts("deleted author with id #{params[:id]} and name #{author_params[:first_name]} #{author_params[:last_name]}")
       redirect_to authors_path
     else
-      puts("failed to delete author with id #{params[:id]} and name #{author_params[:first_name]} #{author_params[:last_name]}")
       render 'index'
     end
   end

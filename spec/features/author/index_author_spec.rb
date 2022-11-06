@@ -34,7 +34,6 @@ describe "Author index page", type: :feature do
     visit authors_path
     # click Delete link and confirm deletion
     click_link('Delete', :href => author_path(@alan))
-    page.driver.browser.switch_to.alert.accept
     #check if number of authors decreased by 1
     expect(Author.count).to eq(count-1)
   end
