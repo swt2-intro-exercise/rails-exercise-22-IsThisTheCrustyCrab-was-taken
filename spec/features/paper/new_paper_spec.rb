@@ -39,4 +39,14 @@ describe "New paper page", type: :feature do
     find('input[type="submit"]').click
     expect(page).to have_text("Year can't be blank")
   end
+  #check if creating paper with non integer year fails
+  it "should show an error message if year is not an integer" do
+    visit new_paper_path
+    # these are the standard names given to inputs by the Rails form builder
+    fill_in 'paper[title]', with: 'Computing Machinery and Intelligence'
+    fill_in 'paper[venue]', with: 'Mind 49: 433-460'
+    fill_in 'paper[year]', with: 'nineteen fifty'
+    find('input[type="submit"]').click
+    expect(page).to have_text("Year is not a number")
+  end
 end
