@@ -20,4 +20,22 @@ describe "Author index page", type: :feature do
     visit authors_path
     expect(page).to have_link("New", :href => new_author_path)
   end
+  #check if index page has link to delete author
+  it "should have a link to delete an author" do
+    @alan = FactoryBot.create :author
+    visit authors_path
+    expect(page).to have_link("Delete", :href => author_path(@alan))
+  end
+  #check if deleting author decreases number of authors in database
+  it "should delete an author" do
+    @alan = FactoryBot.create :author
+    count = Author.count
+    #click on delete link for alan on index page
+    visit authors_path
+    # click Delete link and confirm deletion
+    click_link('Delete', :href => author_path(@alan))
+    page.driver.browser.switch_to.alert.accept
+    #check if number of authors decreased by 1
+    expect(Author.count).to eq(count-1)
+  end
 end
