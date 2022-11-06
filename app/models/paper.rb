@@ -5,4 +5,9 @@ class Paper < ApplicationRecord
   validates :venue, presence: true, length: { minimum: 1 }
   #https://stackoverflow.com/questions/1089436/validate-integer-in-rails
   validates :year, presence: true, numericality: { only_integer: true }
+  #scope for filtering papers by year
+  scope :published_in, ->(year) { where("year = ?", year) }
+  def self.published_in(year)
+    where("year = ?", year)
+  end
 end
