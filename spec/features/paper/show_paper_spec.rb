@@ -22,4 +22,15 @@ describe "Show paper page", type: :feature do
     visit paper_path(@paper)
     expect(page).to have_text("Alan Turing")
   end
+  #check if page has a multiple select box
+  it "should have a multiple select box for authors" do
+    #create paper
+    @paper = FactoryBot.create :paper
+    #create authors
+    @alan = FactoryBot.create :author
+    @paper.authors << @alan
+    @paper.save
+    visit paper_path(@paper)
+    expect(page).to have_select('paper_author_ids', :multiple => true)
+  end
 end
