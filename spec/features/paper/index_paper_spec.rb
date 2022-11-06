@@ -2,7 +2,7 @@ require 'rails_helper'
 
 
 describe "Paper index page", type: :feature do
-  #check if edit link exists
+  #check if edit button exists
   it "should have a link to edit a paper" do
     @paper = FactoryBot.create :paper
     visit papers_path
